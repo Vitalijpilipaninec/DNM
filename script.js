@@ -361,7 +361,7 @@ const CUSTOM_IMG = {
    "S-031": "kepek/34.jpg",
    "S-032": "kepek/35.jpg",
    "S-033": "kepek/36.jpg",
-   "D-034": "kepek/37.png",
+   "D-034": "kepek/37.jpg",
    "D-041": "kepek/38.jpg",
    "K-042": "kepek/38.jpg",
    "K-043": "kepek/39.jpg",
