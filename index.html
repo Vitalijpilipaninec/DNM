@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="hu" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DNM™ — Definitely Not McDonalds | Street Food Since </title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700;900&family=Permanent+Marker&family=Rock+Salt&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="shortcut icon" href="playstore.png" type="image/x-icon">
+<script>
+  (function() {
+    var t = localStorage.getItem('dnm-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    var l = localStorage.getItem('dnm-lang') || 'hu';
+    document.documentElement.setAttribute('lang', l);
+  })();
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <svg class="logo-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#FFD400"/>
+          <stop offset="100%" stop-color="#FF3D00"/>
+        </linearGradient>
+      </defs>
+      <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" fill="none" stroke="url(#logoGrad)" stroke-width="3"/>
+      <polygon points="50,15 82,32.5 82,67.5 50,85 18,67.5 18,32.5" fill="url(#logoGrad)" opacity="0.15"/>
+      <text x="50" y="58" font-family="Anton, sans-serif" font-size="30" font-weight="900" fill="url(#logoGrad)" text-anchor="middle" letter-spacing="1">DNM</text>
+      <circle cx="78" cy="22" r="4" fill="#FFD400"/>
+      <circle cx="22" cy="78" r="3" fill="#FF3D00"/>
+    </svg>
+    <div class="logo-text">
+      <span class="main">DNM™</span>
+      <span class="sub" data-i18n="logo.sub">Definitely Not McD</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#menu" data-i18n="nav.menu">Menü</a></li>
+    <li><a href="#location" data-i18n="nav.location">Helyszín</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="lang-toggle" id="langToggle" title="Language / Nyelv"><span id="langLabel">HU</span></button>
+    <button class="theme-toggle" id="themeToggle" title="Téma váltása"><span class="icon" id="themeIcon">🌙</span></button>
+    <button class="user-btn" id="userBtn" title="Fiók"><span id="userIcon">👤</span></button>
+    <button class="cart-btn" id="cartBtn" title="Kosár megnyitása">🛒<span class="badge" id="cartBadge">0</span></button>
+    <button class="nav-cta" id="orderNowBtn" data-i18n="nav.order">Rendelj most</button>
+  </div>
+</nav>
+
+<!-- USER DROPDOWN -->
+<div class="user-dropdown" id="userDropdown">
+  <div class="user-dd-header">
+    <div class="user-dd-avatar" id="userAvatar">?</div>
+    <div class="user-dd-info">
+      <div class="user-dd-name" id="userName">Vendég</div>
+      <div class="user-dd-email" id="userEmail">—</div>
+    </div>
+  </div>
+  <button class="user-dd-btn" id="userLogout" data-i18n="user.logout">Kijelentkezés</button>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-logo">
+        <svg class="hero-logo-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FFD400"/>
+              <stop offset="100%" stop-color="#FF3D00"/>
+            </linearGradient>
+          </defs>
+          <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" fill="none" stroke="url(#heroGrad)" stroke-width="3"/>
+          <polygon points="50,15 82,32.5 82,67.5 50,85 18,67.5 18,32.5" fill="url(#heroGrad)" opacity="0.15"/>
+          <text x="50" y="58" font-family="Anton, sans-serif" font-size="30" font-weight="900" fill="url(#heroGrad)" text-anchor="middle" letter-spacing="1">DNM</text>
+          <circle cx="78" cy="22" r="4" fill="#FFD400"/>
+          <circle cx="22" cy="78" r="3" fill="#FF3D00"/>
+        </svg>
+        <div class="hero-logo-text">
+          <span class="main">DNM™</span>
+          <span class="sub" data-i18n="hero.sub">Street Food ·</span>
+        </div>
+      </div>
+
+      <span class="hero-tag" data-i18n="hero.tag">// megint éhes vagy? jó. gyere.</span>
+
+      <h1>
+        <span class="outline">Definitely</span>
+        <span class="fill">Not <span class="accent">McD</span></span>
+        <span class="outline">onalds™</span>
+      </h1>
+
+      <p class="hero-sub" data-i18n-html="hero.desc">
+        Ez <strong>nem az a hely, ahol a "burger" szó műanyagot jelent.</strong> A nevünk vicc, a kajánk viszont <span class="highlight">halálosan komoly.</span> Minden reggel friss zsemle, helyi hús, házi szósz — és semmi, ami a fagyasztóból jön.
+      </p>
+
+      <div class="hero-manifesto">
+        <div class="line"><span class="dot"></span><span data-i18n-html="hero.m1">Nem vagyunk McDonalds. <strong>Tényleg nem.</strong></span></div>
+        <div class="line"><span class="dot"></span><span data-i18n-html="hero.m2">Nincs bohóc. <strong>Nincs játszótér.</strong> Csak kaja.</span></div>
+        <div class="line"><span class="dot"></span><span data-i18n-html="hero.m3">Ha a "Big Mac"-et keresed — <strong>sok szerencsét.</strong></span></div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="n">64</div><div class="l" data-i18n="hero.stat1">Termék</div></div>
+        <div class="hero-stat"><div class="n">10</div><div class="l" data-i18n="hero.stat2">Kategória</div></div>
+        <div class="hero-stat"><div class="n">100%</div><div class="l" data-i18n="hero.stat3">Friss</div></div>
+        <div class="hero-stat"><div class="n">0</div><div class="l" data-i18n="hero.stat4">Bohóc</div></div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#menu" class="btn-primary" data-i18n="hero.btn1">Menü böngészése</a>
+        <a href="#story" class="btn-ghost" data-i18n="hero.btn2">Mi ez az egész?</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-deco d1">DNM</div>
+      <div class="hero-deco d2"></div>
+
+      <div class="float-card c1" style="--rot: -6deg;">
+        <div class="img-wrap">
+          <img src="kepek/images.jpg" alt="Smash Burger" >
+        </div>
+        <div class="info">
+          <div class="name">Smash Burger</div>
+          <div class="price">2 490 Ft</div>
+        </div>
+      </div>
+
+      <div class="float-card c2" style="--rot: 5deg;">
+        <div class="img-wrap">
+          <img src="kepek/2.jpg" alt="Crispy Chicken" >
+        </div>
+        <div class="info">
+          <div class="name">Crispy Chicken</div>
+          <div class="price">2 290 Ft</div>
+        </div>
+      </div>
+
+      <div class="float-card c3" style="--rot: 3deg;">
+        <div class="img-wrap">
+          <img src="kepek/3.jpg" alt="Loaded Fries" >
+        </div>
+        <div class="info">
+          <div class="name">Loaded Fries</div>
+          <div class="price">1 590 Ft</div>
+        </div>
+      </div>
+
+      <div class="float-card c4" style="--rot: -4deg;">
+        <div class="img-wrap">
+          <img src="kepek/4.png" alt="Classic Cola" >
+        </div>
+        <div class="info">
+          <div class="name">Classic Cola</div>
+          <div class="price">690 Ft</div>
+        </div>
+      </div>
+
+      <div class="hero-badge">
+        <div class="inner">
+          <svg class="mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFD400"/>
+                <stop offset="100%" stop-color="#FF3D00"/>
+              </linearGradient>
+            </defs>
+            <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" fill="none" stroke="url(#badgeGrad)" stroke-width="3"/>
+            <text x="50" y="58" font-family="Anton, sans-serif" font-size="30" font-weight="900" fill="url(#badgeGrad)" text-anchor="middle" letter-spacing="1">DNM</text>
+          </svg>
+          <div class="txt">DNM</div>
+          <div class="sub">est. </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-marquee">
+    <div class="marquee-track">
+      <span>Smash Burger</span><span>Crispy Chicken</span><span>Loaded Fries</span>
+      <span>Buffalo Wings</span><span>Milkshake</span><span>Nuggets</span>
+      <span>Chili Cheese</span><span>Vegan Burger</span><span>Onion Rings</span>
+      <span>Family Combo</span>
+      <span>Smash Burger</span><span>Crispy Chicken</span><span>Loaded Fries</span>
+      <span>Buffalo Wings</span><span>Milkshake</span><span>Nuggets</span>
+      <span>Chili Cheese</span><span>Vegan Burger</span><span>Onion Rings</span>
+      <span>Family Combo</span>
+    </div>
+  </div>
+</header>
+
+<!-- MENU HEADER -->
+<section class="menu-section" id="menu">
+  <div class="section-wrap">
+    <div class="menu-header">
+      <div>
+        <div class="section-label" data-i18n="menu.label">01 — A teljes menü</div>
+        <h2 class="section-title" data-i18n-html="menu.title">Amit <em>kapsz</em></h2>
+      </div>
+      <div class="menu-header-right" id="totalCount">// ...</div>
+    </div>
+
+    <div class="menu-controls">
+      <div class="search-box">
+        <span class="icon">🔍</span>
+        <input type="text" id="searchInput" data-i18n-placeholder="menu.search" placeholder="Keress terméket... (pl. burger, cola, wings)">
+      </div>
+      <div class="filter-chips" id="filterChips">
+        <button class="chip active" data-filter="all" data-i18n="filter.all">Összes</button>
+        <button class="chip" data-filter="vega" data-i18n="filter.vega">Vega</button>
+        <button class="chip" data-filter="csipos" data-i18n="filter.hot">Csípős</button>
+        <button class="chip" data-filter="uj" data-i18n="filter.new">Új</button>
+        <button class="chip" data-filter="premium" data-i18n="filter.premium">Prémium</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY CATEGORY NAV -->
+<div class="category-nav">
+  <div class="category-nav-inner" id="categoryNav">
+    <a href="#cat-burgers" class="cat-pill"><span class="num">01</span> <span data-i18n="cat.burgers">Burgerek</span></a>
+    <a href="#cat-chicken" class="cat-pill"><span class="num">02</span> <span data-i18n="cat.chicken">Csirke &amp; Nuggets</span></a>
+    <a href="#cat-wings" class="cat-pill"><span class="num">03</span> <span data-i18n="cat.wings">Wings</span></a>
+    <a href="#cat-fries" class="cat-pill"><span class="num">04</span> <span data-i18n="cat.fries">Fries</span></a>
+    <a href="#cat-sides" class="cat-pill"><span class="num">05</span> <span data-i18n="cat.sides">Sides</span></a>
+    <a href="#cat-drinks" class="cat-pill"><span class="num">06</span> <span data-i18n="cat.drinks">Üdítők</span></a>
+    <a href="#cat-shakes" class="cat-pill"><span class="num">07</span> <span data-i18n="cat.shakes">Shake &amp; Desszert</span></a>
+    <a href="#cat-sauces" class="cat-pill"><span class="num">08</span> <span data-i18n="cat.sauces">Szószok</span></a>
+    <a href="#cat-family" class="cat-pill"><span class="num">09</span> <span data-i18n="cat.family">Családi</span></a>
+    <a href="#cat-kids" class="cat-pill"><span class="num">10</span> <span data-i18n="cat.kids">Gyerek</span></a>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="menu-section" style="padding-top: 0;">
+  <div class="section-wrap">
+    <div id="productsContainer"></div>
+    <div class="no-results" id="noResults">
+      <div class="big">404</div>
+      <div data-i18n="no.results">Nincs találat. Próbálj mást keresni. (Vagy ne. Nekünk mindegy.)</div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="loc-inner">
+    <div class="section-label" data-i18n="loc.label">03 — Merre találsz</div>
+    <h2 class="section-title" data-i18n-html="loc.title">Gyere <em>éhesen</em></h2>
+    <div class="loc-grid">
+      <div class="loc-map">
+        <iframe
+          src="https://www.openstreetmap.org/export/embed.html?bbox=19.0480%2C47.4905%2C19.0620%2C47.4970&amp;layer=mapnik&amp;marker=47.4937%2C19.0550"
+          loading="lazy"
+          title="DNM Location">
+        </iframe>
+      </div>
+      <div class="loc-info">
+        <h3 data-i18n="loc.hours">Nyitvatartás</h3>
+        <ul class="hours-list">
+          <li><span class="day" data-i18n="loc.day.mon">Hétfő</span><span class="time" data-i18n="loc.closed">Zárva (mint a McD, de nekünk megvan az okunk)</span></li>
+          <li><span class="day" data-i18n="loc.day.tue.thu">Kedd – Csütörtök</span><span class="time">11:30 – 21:00</span></li>
+          <li class="today"><span class="day" data-i18n="loc.day.fri.sat">Péntek – Szombat</span><span class="time">11:30 – 23:00</span></li>
+          <li><span class="day" data-i18n="loc.day.sun">Vasárnap</span><span class="time">12:00 – 20:00</span></li>
+        </ul>
+        <div class="contact-line"><span class="k" data-i18n="loc.address">Cím:</span><span class="v">1052 Budapest, Váci utca 42.</span></div>
+        <div class="contact-line"><span class="k" data-i18n="loc.tel">Tel:</span><span class="v">+36 30 123 4567</span></div>
+        <div class="contact-line"><span class="k" data-i18n="loc.email">Email:</span><span class="v">hello@dnm.hu</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <h2 data-i18n="cta.title">Éhes vagy már?</h2>
+  <p data-i18n="cta.sub">// 64 termék. egy helyen. és nem, ez nem a McDonalds.</p>
+  <a href="#menu" class="btn-dark" id="ctaOrderBtn" data-i18n="cta.btn">Rendelés indítása</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">
+        <svg class="logo-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="footGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FFD400"/>
+              <stop offset="100%" stop-color="#FF3D00"/>
+            </linearGradient>
+          </defs>
+          <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" fill="none" stroke="url(#footGrad)" stroke-width="3"/>
+          <text x="50" y="58" font-family="Anton, sans-serif" font-size="30" font-weight="900" fill="url(#footGrad)" text-anchor="middle" letter-spacing="1">DNM</text>
+        </svg>
+        <div class="logo-text">
+          <span class="main">DNM™</span>
+          <span class="sub" data-i18n="logo.sub">Definitely Not McD</span>
+        </div>
+      </a>
+      <p style="margin-top: 16px;" data-i18n="footer.desc">Definitely Not McDonalds. Utcai kaja, füst, neon, és semmi műanyag.  A bohóc nálunk nem játszik.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.menu">Menü</h4>
+      <ul>
+        <li><a href="#cat-burgers" data-i18n="cat.burgers">Burgerek</a></li>
+        <li><a href="#cat-chicken" data-i18n="cat.chicken">Csirke</a></li>
+        <li><a href="#cat-wings" data-i18n="cat.wings">Wings</a></li>
+        <li><a href="#cat-fries" data-i18n="cat.fries">Fries</a></li>
+        <li><a href="#cat-drinks" data-i18n="cat.drinks">Üdítők</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.info">Info</h4>
+      <ul>
+        <li><a href="#location" data-i18n="footer.hours">Nyitvatartás</a></li>
+        <li><a href="#" data-i18n="footer.allergens">Allergének</a></li>
+        <li><a href="#" data-i18n="footer.career">Karrier (nem bohóckodunk)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.follow">Kövess</h4>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@viktor_a_tiktokon">TikTok</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">X</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© DNM — Definitely Not McDonalds™</span>
+  </div>
+</footer>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cartOverlay"></div>
+
+<!-- CART PANEL -->
+<aside class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <h3><span data-i18n="cart.title">Kosár</span> <span class="count-pill" id="cartCountPill">0</span></h3>
+    <button class="cart-close" id="cartClose" title="Bezárás">×</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty">
+      <div class="icon">🛒</div>
+      <div class="title" data-i18n="cart.empty.title">Üres a kosár</div>
+      <div class="sub" data-i18n="cart.empty.sub">Ez most olyan, mint a McD kajája: üres és szomorú.</div>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-summary"><span data-i18n="cart.subtotal">Részösszeg</span><span id="cartSubtotal">0 Ft</span></div>
+    <div class="cart-summary"><span data-i18n="cart.shipping">Szállítás</span><span style="color: var(--neon2); font-weight:900;" data-i18n="cart.free">INGYENES</span></div>
+    <div class="cart-summary total"><span data-i18n="cart.total">ÖSSZESEN</span><span class="value" id="cartTotal">0 Ft</span></div>
+    <button class="checkout-btn" id="checkoutBtn" disabled data-i18n="cart.checkout">Rendelés leadása</button>
+    <div class="cart-joke" id="cartJoke" data-i18n="cart.joke">// tedd be a kaját, nem lesz bohóc</div>
+  </div>
+</aside>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <span class="check">✓</span>
+  <span id="toastText">Hozzáadva a kosárhoz</span>
+</div>
+
+<!-- ==================== CHECKOUT MODAL ==================== -->
+<div class="checkout-modal" id="checkoutModal">
+  <div class="checkout-content checkout-multi">
+
+    <button class="checkout-close-x" id="checkoutCloseX">×</button>
+
+    <!-- STEPPER -->
+    <div class="checkout-stepper" id="checkoutStepper">
+      <div class="step active" data-step="1">
+        <div class="step-num">1</div>
+        <div class="step-label" data-i18n="co.step.shipping">Szállítás</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" data-step="2">
+        <div class="step-num">2</div>
+        <div class="step-label" data-i18n="co.step.payment">Fizetés</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" data-step="3">
+        <div class="step-num">3</div>
+        <div class="step-label" data-i18n="co.step.confirm">Megerősítés</div>
+      </div>
+    </div>
+
+    <!-- STEP 1: SHIPPING -->
+    <div class="checkout-step" id="coStep1">
+      <h3 class="co-title" data-i18n="co.shipping.title">Szállítási adatok</h3>
+      <p class="co-subtitle" data-i18n="co.shipping.sub">Hova vigyük a kaját?</p>
+
+      <div class="co-form">
+        <div class="co-form-row">
+          <div class="form-group">
+            <label data-i18n="co.name">Teljes név *</label>
+            <input type="text" id="coName" data-i18n-placeholder="co.name.ph" placeholder="Kis Pista">
+            <div class="field-error" id="coNameError"></div>
+          </div>
+          <div class="form-group">
+            <label data-i18n="co.phone">Telefonszám *</label>
+            <input type="tel" id="coPhone" data-i18n-placeholder="co.phone.ph" placeholder="+36 30 123 4567">
+            <div class="field-error" id="coPhoneError"></div>
+          </div>
+        </div>
+
+        <div class="co-form-row">
+          <div class="form-group">
+            <label data-i18n="co.zip">Irányítószám *</label>
+            <input type="text" id="coZip" maxlength="4" data-i18n-placeholder="co.zip.ph" placeholder="1052">
+            <div class="field-error" id="coZipError"></div>
+          </div>
+          <div class="form-group">
+            <label data-i18n="co.city">Város *</label>
+            <input type="text" id="coCity" data-i18n-placeholder="co.city.ph" placeholder="Budapest">
+            <div class="field-error" id="coCityError"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label data-i18n="co.street">Utca, házszám *</label>
+          <input type="text" id="coStreet" data-i18n-placeholder="co.street.ph" placeholder="Váci utca 42.">
+          <div class="field-error" id="coStreetError"></div>
+        </div>
+
+        <div class="co-form-row">
+          <div class="form-group">
+            <label data-i18n="co.floor">Emelet / ajtó</label>
+            <input type="text" id="coFloor" data-i18n-placeholder="co.floor.ph" placeholder="3/12">
+          </div>
+          <div class="form-group">
+            <label data-i18n="co.bell">Kapucsengő</label>
+            <input type="text" id="coBell" data-i18n-placeholder="co.bell.ph" placeholder="Kis Pista">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label data-i18n="co.note">Megjegyzés a futárnak</label>
+          <textarea id="coNote" rows="2" data-i18n-placeholder="co.note.ph" placeholder="Pl. a kapucsengő nem működik, hívj fel!"></textarea>
+        </div>
+      </div>
+
+      <div class="co-actions">
+        <button class="co-btn co-btn-primary" id="coToStep2" data-i18n="co.next">Tovább a fizetéshez →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: PAYMENT -->
+    <div class="checkout-step" id="coStep2" style="display:none;">
+      <h3 class="co-title" data-i18n="co.payment.title">Fizetési mód</h3>
+      <p class="co-subtitle" data-i18n="co.payment.sub">Hogyan szeretnél fizetni?</p>
+
+      <div class="payment-methods">
+        <label class="pay-method">
+          <input type="radio" name="payMethod" value="card" checked>
+          <div class="pay-method-inner">
+            <span class="pay-icon">💳</span>
+            <div>
+              <div class="pay-title" data-i18n="co.pay.card">Bankkártya</div>
+              <div class="pay-desc" data-i18n="co.pay.card.desc">Visa, Mastercard, Amex</div>
+            </div>
+          </div>
+        </label>
+
+        <label class="pay-method">
+          <input type="radio" name="payMethod" value="cash">
+          <div class="pay-method-inner">
+            <span class="pay-icon">💵</span>
+            <div>
+              <div class="pay-title" data-i18n="co.pay.cash">Készpénz átvételkor</div>
+              <div class="pay-desc" data-i18n="co.pay.cash.desc">A futárnál fizetsz</div>
+            </div>
+          </div>
+        </label>
+
+        <label class="pay-method">
+          <input type="radio" name="payMethod" value="szep">
+          <div class="pay-method-inner">
+            <span class="pay-icon">🎫</span>
+            <div>
+              <div class="pay-title" data-i18n="co.pay.szep">SZÉP kártya</div>
+              <div class="pay-desc" data-i18n="co.pay.szep.desc">OTP, K&H, MBH</div>
+            </div>
+          </div>
+        </label>
+      </div>
+
+      <!-- CARD DETAILS -->
+      <div class="card-details" id="cardDetails">
+        <div class="form-group">
+          <label data-i18n="co.card.number">Kártyaszám *</label>
+          <input type="text" id="coCardNumber" maxlength="19" inputmode="numeric" data-i18n-placeholder="co.card.number.ph" placeholder="1234 5678 9012 3456">
+          <div class="field-error" id="coCardNumberError"></div>
+        </div>
+
+        <div class="form-group">
+          <label data-i18n="co.card.holder">Kártyabirtokos neve *</label>
+          <input type="text" id="coCardHolder" data-i18n-placeholder="co.card.holder.ph" placeholder="KIS PISTA">
+          <div class="field-error" id="coCardHolderError"></div>
+        </div>
+
+        <div class="co-form-row">
+          <div class="form-group">
+            <label data-i18n="co.card.exp">Lejárat (HH/ÉÉ) *</label>
+            <input type="text" id="coCardExp" maxlength="5" inputmode="numeric" data-i18n-placeholder="co.card.exp.ph" placeholder="12/28">
+            <div class="field-error" id="coCardExpError"></div>
+          </div>
+          <div class="form-group">
+            <label data-i18n="co.card.cvc">CVC *</label>
+            <input type="text" id="coCardCvc" maxlength="4" inputmode="numeric" data-i18n-placeholder="co.card.cvc.ph" placeholder="123">
+            <div class="field-error" id="coCardCvcError"></div>
+          </div>
+        </div>
+
+        <div class="card-notice">
+          <span>🔒</span>
+          <span data-i18n="co.card.notice">Demo: nem történik valódi fizetés. Az adatok csak a böngésződben maradnak.</span>
+        </div>
+      </div>
+
+      <div class="co-actions co-actions-split">
+        <button class="co-btn co-btn-ghost" id="coBackTo1" data-i18n="co.back">← Vissza</button>
+        <button class="co-btn co-btn-primary" id="coToStep3" data-i18n="co.next">Tovább az összegzéshez →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: CONFIRM -->
+    <div class="checkout-step" id="coStep3" style="display:none;">
+      <h3 class="co-title" data-i18n="co.confirm.title">Rendelés összegzése</h3>
+      <p class="co-subtitle" data-i18n="co.confirm.sub">Minden rendben?</p>
+
+      <div class="co-summary">
+        <div class="co-summary-block">
+          <div class="co-summary-label" data-i18n="co.confirm.shipping">Szállítási cím</div>
+          <div class="co-summary-value" id="coSummaryAddress">—</div>
+        </div>
+
+        <div class="co-summary-block">
+          <div class="co-summary-label" data-i18n="co.confirm.payment">Fizetési mód</div>
+          <div class="co-summary-value" id="coSummaryPayment">—</div>
+        </div>
+
+        <div class="co-summary-block">
+          <div class="co-summary-label" data-i18n="co.confirm.items">Tételek</div>
+          <div class="co-summary-items" id="coSummaryItems"></div>
+        </div>
+
+        <div class="co-total-row">
+          <span data-i18n="co.confirm.total">Fizetendő</span>
+          <span class="co-total-value" id="coSummaryTotal">0 Ft</span>
+        </div>
+      </div>
+
+      <div class="co-actions co-actions-split">
+        <button class="co-btn co-btn-ghost" id="coBackTo2" data-i18n="co.back">← Vissza</button>
+        <button class="co-btn co-btn-primary" id="coPlaceOrder" data-i18n="co.place">Rendelés leadása ✓</button>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="checkout-step co-success" id="coStepSuccess" style="display:none;">
+      <div class="big-icon">🎉</div>
+      <h2 data-i18n="co.success.title">Rendelés leadva!</h2>
+      <p data-i18n="co.success.p1">Kösz, hogy minket választottál.</p>
+      <p data-i18n-html="co.success.p2">És nem, <strong>tényleg nem</strong> vagyunk a McDonalds.</p>
+      <div class="order-num" id="coOrderNum">#DNM-0000</div>
+      <div class="co-success-details" id="coSuccessDetails"></div>
+      <div class="joke" data-i18n="co.success.joke">// a bohóc nem jön. soha.</div>
+      <button class="checkout-close" id="coSuccessClose" data-i18n="co.success.close">Rendben, csá</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div class="auth-modal" id="authModal">
+  <div class="auth-content">
+    <button class="auth-close" id="authClose">×</button>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login" data-i18n="auth.login">Bejelentkezés</button>
+      <button class="auth-tab" data-tab="register" data-i18n="auth.register">Regisztráció</button>
+    </div>
+
+    <div class="auth-intro">
+      <div class="auth-logo">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:54px;height:54px;">
+          <defs>
+            <linearGradient id="authGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FFD400"/>
+              <stop offset="100%" stop-color="#FF3D00"/>
+            </linearGradient>
+          </defs>
+          <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" fill="none" stroke="url(#authGrad)" stroke-width="3"/>
+          <text x="50" y="58" font-family="Anton, sans-serif" font-size="30" font-weight="900" fill="url(#authGrad)" text-anchor="middle" letter-spacing="1">DNM</text>
+        </svg>
+      </div>
+      <h2 id="authTitle" data-i18n="auth.welcome">Üdv újra!</h2>
+      <p id="authSubtitle" data-i18n="auth.welcome.sub">Jelentkezz be, hogy rendelhess.</p>
+    </div>
+
+    <form class="auth-form" id="loginForm">
+      <div class="form-group">
+        <label data-i18n="form.email">Email</label>
+        <input type="email" id="loginEmail" data-i18n-placeholder="form.email.ph" placeholder="te@example.com" autocomplete="email">
+        <div class="field-error" id="loginEmailError"></div>
+      </div>
+      <div class="form-group">
+        <label data-i18n="form.password">Jelszó</label>
+        <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password">
+        <div class="field-error" id="loginPasswordError"></div>
+      </div>
+      <button type="submit" class="auth-submit" data-i18n="auth.login.btn">Bejelentkezés</button>
+      <div class="auth-error" id="loginGlobalError"></div>
+    </form>
+
+    <form class="auth-form" id="registerForm" style="display:none;">
+      <div class="form-group">
+        <label data-i18n="form.name">Név</label>
+        <input type="text" id="regName" data-i18n-placeholder="form.name.ph" placeholder="Kis Pista" autocomplete="name">
+        <div class="field-error" id="regNameError"></div>
+      </div>
+      <div class="form-group">
+        <label data-i18n="form.email">Email</label>
+        <input type="email" id="regEmail" data-i18n-placeholder="form.email.ph" placeholder="te@example.com" autocomplete="email">
+        <div class="field-error" id="regEmailError"></div>
+      </div>
+      <div class="form-group">
+        <label data-i18n="form.password">Jelszó</label>
+        <input type="password" id="regPassword" placeholder="••••••••" autocomplete="new-password">
+        <div class="pw-requirements" id="pwReq">
+          <div class="pw-req" data-req="length"><span class="tick">○</span> <span data-i18n="pw.req.length">Minimum 8 karakter</span></div>
+          <div class="pw-req" data-req="space"><span class="tick">○</span> <span data-i18n="pw.req.space">Legalább 1 szóköz</span></div>
+          <div class="pw-req" data-req="upper"><span class="tick">○</span> <span data-i18n="pw.req.upper">Legalább 3 nagybetű</span></div>
+          <div class="pw-req" data-req="special"><span class="tick">○</span> <span data-i18n="pw.req.special">Legalább 1 speciális karakter (!@#$%...)</span></div>
+        </div>
+        <div class="field-error" id="regPasswordError"></div>
+      </div>
+      <div class="form-group">
+        <label data-i18n="form.password2">Jelszó újra</label>
+        <input type="password" id="regPassword2" placeholder="••••••••" autocomplete="new-password">
+        <div class="field-error" id="regPassword2Error"></div>
+      </div>
+      <button type="submit" class="auth-submit" data-i18n="auth.register.btn">Fiók létrehozása</button>
+      <div class="auth-error" id="registerGlobalError"></div>
+    </form>
+
+    <div class="auth-hint" data-i18n-html="auth.hint">
+      <strong>Demo:</strong> az adatok csak a böngésződben tárolódnak (localStorage), nem kerülnek szerverre.
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
